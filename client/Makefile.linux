@@ -1,0 +1,20 @@
+CXX=g++
+CXXFLAGS=-DIB_USE_STD_STRING -Wall -Wno-switch
+ROOT_DIR=..
+BASE_SRC_DIR=${ROOT_DIR}/PosixSocketClient
+MONGODB=/home/git/cpp/mongoclient/mongo-cxx-driver-v2.0/mongo
+MONGO_SRC=${ROOT_DIR}/Mongo
+INCLUDES=-I${ROOT_DIR}/Shared/ -I${BASE_SRC_DIR} -I${MONGODB}
+TARGET=run
+LIBS=-lmongoclient -lboost_thread -lboost_filesystem -lboost_program_options -lboost_system
+
+$(TARGET):
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o EClientSocketBase.o -c $(BASE_SRC_DIR)/EClientSocketBase.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o EPosixClientSocket.o -c $(BASE_SRC_DIR)/EPosixClientSocket.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o TwsClient.o -c TwsClient.cpp $(LIBS)
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o Main.o -c Main.cpp
+	$(CXX) $(CXXFLAGS) $(INCLUDES) -o $@ EClientSocketBase.o EPosixClientSocket.o TwsClient.o Main.o $(LIBS)
+
+clean:
+	rm -f $(TARGET) *.o
+

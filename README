@@ -1,0 +1,9 @@
+TwsMongo is an example of integration between Mongodb and InteractiveBrokers.com API v.9.66 written in C++. The goal of this application to save high frequency data in Mongodb database.  
+
+It was tested on linux 3.0
+
+Please refer this page for more information about Mongodb driver: 
+http://www.mongodb.org/pages/viewpage.action?pageId=133409
+
+About InteractiveBrokers API:
+http://individuals.interactivebrokers.com/en/p.php?f=programInterface&ib_entity=llc
