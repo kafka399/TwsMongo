@@ -266,7 +266,6 @@ void TwsClient::tickPrice( TickerId tickerId, TickType field, double price, int 
 	mongo::BSONObj p =
 			mongo::BSONObjBuilder().genOID().append("tickerId",(long long)tickerId).append("field",field).append("price",price).appendNumber("tstamp",(long long)(start.tv_sec*1000+(int)(start.tv_usec/1000))).obj();
 	conn.get()->insert("quotes.test", p);
-	std::cout<<"time "<<start.tv_usec<<std::endl;
 	conn.done();
 	//std::cout<<"id "<<tickerId<<" field "<<field<<" price "<<price<<std::endl;
 }
@@ -277,7 +276,6 @@ void TwsClient::tickSize( TickerId tickerId, TickType field, int size) {
 	mongo::BSONObj p =
 			mongo::BSONObjBuilder().genOID().append("tickerId",(long long)tickerId).append("field",field).append("size",size).appendNumber("tstamp",(long long)(start.tv_sec*1000+(int)(start.tv_usec/1000))).obj();
 	conn.get()->insert("quotes.test", p);
-	std::cout<<"date "<<start.tv_usec<<std::endl;
 	conn.done();
 
 	std::cout<<"id "<<tickerId<<" field "<<field<<" size "<<size<<std::endl;
