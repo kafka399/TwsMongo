@@ -2168,8 +2168,8 @@ int EClientSocketBase::processMsg(const char*& beginPtr, const char* endPtr)
 							sizeTickType = LAST_SIZE;
 						break;
 					}
-					if( sizeTickType != NOT_SET)
-						m_pEWrapper->tickSize( tickerId, sizeTickType, size);
+				//	if( sizeTickType != NOT_SET)
+				//		m_pEWrapper->tickSize( tickerId, sizeTickType, size);
 				}
 
 				break;
